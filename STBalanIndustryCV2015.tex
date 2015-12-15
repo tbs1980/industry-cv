@@ -1,25 +1,43 @@
 % This a XeLaTeX document
-
 \documentclass[]{friggeri-cv}
+\usepackage{fontawesome}
+
+\newfontfamily{\FA}{FontAwesome}
+\def\twitter{{\FA \faTwitter}}
+\def\email{{\FA \faEnvelope}}
+\def\linkedin{{\FA \faLinkedinSign}}
+\def\homepage{{\FA \faHome}}
+\def\github{{\FA \faGithub}}
+\def\telephone{{\FA \faPhone}}
 
 \begin{document}
-    \header{Sreekumar}{Thaithara Balan}{research associate in cosmology}
+    \header{Sreekumar}{Thaithara Balan}{post-doctoral research associate}
 
     \begin{aside}% In the aside, each new line forces a line break
         \section{contact}
-            17 The Terrace,
-            Hampden Gardens,
-            Cambride, CB1 3DU
+            13 Ballinger Court,
+            Halsey Road,
+            Watford, WD18 0JR
+            \telephone\ +44 7540757042
             ~
-            \href{mailto:sbalan@star.ucl.ac.uk}{sbalan@star.ucl.ac.uk}
-            \href{http://tbs1980.github.io}{http://tbs1980.github.io}
+            \href{mailto:tbs1980@gmail.com}{\email\ tbs1980@gmail.com}
+            \href{http://tbs1980.github.io}{\homepage\ tbs1980.github.io}
+            \href{https://twitter.com/sreekumar_balan}{\twitter\ sreekumar\_balan}
+            \href{https://uk.linkedin.com/in/stbalan}{\linkedin\ stbalan}
+            \href{https://github.com/tbs1980}{\github\ tbs1980}
         \section{programming}
-            {\color{red} $\varheartsuit$} C/C++,
+            C, C++,
             Python, R,
-            Fortran, Matlab
+            Fortran, Julia
         \section{parallel / hpc}
             MPI, OpenMP,
             CUDA, OpenCL
+        \section{versioning}
+            git, mercurial
+        \section{build}
+            CMake, Waf
+        \section{cloud}
+            AWS, Rescale
     \end{aside}
 
 
@@ -29,21 +47,32 @@
             {2008 -- 2012}
             {Ph.D. {\normalfont in Physics}}
             {University of Cambridge, UK}
-            {\emph{Bayesian methods for astrophysical data analysis} \\
-            This thesis is about the application of Bayeisan Monte Carlo methods for\\
-            statsitical inference in cosmology and astrphysics.}
+            {Thesis: \emph{Bayesian methods for astrophysical data analysis}
+                \begin{itemize}
+                    \item Designed a parallel C++ code for performing Hamiltonian Monte Carlo for cosmological data analysis
+                    \item Analysed stellar photometry data using a high performance Bayesian object detection algorithm
+                    \item Developed a novel method based on wavelets for quantifying non-Gaussanities in cosmological data
+                \end{itemize}
+            }
             %
             \entry
             {2006 -- 2007}
             {M.Sc. {\normalfont in Physics}}
             {University College London, UK}
-            {Thesis on Bayesian object detation of exoplanets}
+            {Thesis: \emph{Orbital parameters of exoplanets from radial velocity measurements}
+                \begin{itemize}
+                    \item Developed a Bayesian Markov Chain Monte Carlo algorithm for extras-solar planet detection
+                \end{itemize}
+            }
             %
             \entry
             {1998 -- 2002}
             {B.Tech. {\normalfont in Mechanical Engineering}}
             {National Institute of Technology, Calicut, India}
-            {Thesis on Finite Element Method for stress analysis}
+            {Final year research project:
+            \begin{itemize}
+                \item Wrote and C code for analysing the stress distribution of an artificial hip-joint using Finite Element Method
+            \end{itemize}}
         \end{entrylist}
 
     \section{experience}
@@ -52,21 +81,46 @@
             {2012 -- Now}
             {University College London}
             {\emph{Post-Doctoral Research Associate}}
-            {sdfds}
+            {Achievements:
+            \begin{itemize}
+                \item Developed a software for performing model selection by optimally propagating uncertainties from cosmological observations
+                \item Designed a highly parallel Monte Carlo method for Bayesian computation and benchmarked it on
+            various supercomputing platforms.
+                \item Offered administrative support for the cosmology group's supercomputer
+            \end{itemize}}
             %
             \entry
             {2007 -- 2008}
             {University College London}
             {\emph{Research Assistant}}
-            {sdfds}
+            {Achievements:
+            \begin{itemize}
+                \item Created a C++ library for stochastically simulating a billion galaxy images
+                \item Designed an Object Oriented Markov Chain Monte Carlo software for Bayesian exoplanet detection
+            \end{itemize}}
         \end{entrylist}
 
     \section{awards}
         \begin{entrylist}
             \entry
-            {2009-2011}
+            {2009 -- 2011}
             {Isaac Newton Studentship}
             {University of Cambridge}
-            {Awarded to two out of more than 100 applicants}
+            {Awarded to two out of more than hundred applicants}
+            %
+            \entry
+            {2007}
+            {Royal Astronomical Society Grant (£2000)}
+            {University College London}
+            {For the development of a statistical software package for analysing radial velocity data of stars}
+        \end{entrylist}
+
+    \section{publications}
+        \begin{entrylist}
+            \entry
+            {h-index:11}
+            {Three first-author and more than five second-author publications}
+            {}
+            {}
         \end{entrylist}
 \end{document}
