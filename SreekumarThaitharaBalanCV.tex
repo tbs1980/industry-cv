@@ -1,126 +1,236 @@
-% This a XeLaTeX document
-\documentclass[]{friggeri-cv}
-\usepackage{fontawesome}
+\documentclass[a4paper,10pt]{article}
 
-\newfontfamily{\FA}{FontAwesome}
-\def\twitter{{\FA \faTwitter}}
-\def\email{{\FA \faEnvelope}}
-\def\linkedin{{\FA \faLinkedinSign}}
-\def\homepage{{\FA \faHome}}
-\def\github{{\FA \faGithub}}
-\def\telephone{{\FA \faPhone}}
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage{fontspec} %for loading font
+\usepackage{xunicode,xltxtra,url,parskip} %other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} %better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{titlesec} %custom \section
 
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+%%%
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{2pt}{2pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
 \begin{document}
-    \header{Sreekumar}{Thaithara Balan}{post-doctoral research associate}
 
-    \begin{aside}% In the aside, each new line forces a line break
-        \section{contact}
-            13 Ballinger Court,
-            Halsey Road,
-            Watford, WD18 0JR
-            \telephone\ +44 7540757042
-            ~
-            \href{mailto:tbs1980@gmail.com}{\email\ tbs1980@gmail.com}
-            \href{http://tbs1980.github.io}{\homepage\ tbs1980.github.io}
-            \href{https://twitter.com/sreekumar_balan}{\twitter\ sreekumar\_balan}
-            \href{https://uk.linkedin.com/in/stbalan}{\linkedin\ stbalan}
-            \href{https://github.com/tbs1980}{\github\ tbs1980}
-        \section{programming}
-            C, C++,
-            Python, R,
-            Fortran, Julia
-        \section{parallel / hpc}
-            MPI, OpenMP,
-            CUDA, OpenCL
-        \section{versioning}
-            git, mercurial
-        \section{build}
-            CMake, Waf
-        \section{cloud}
-            AWS, Rescale
-    \end{aside}
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
+
+\pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+  {\huge Sreekumar \textsc{Thaithara Balan}
+  }\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\section{personal details}
+
+\begin{tabular}{r|p{11cm}}
+    %\textsc{Place and Date of Birth:} & Someplace, Italy  | dd Month 1912 \\
+    %\textsc{Address:}   & CV Inn 19, 20301, Milano, Italy \\
+    \textsc{phone:}     & +44 7540757042\\
+    \textsc{email:}     & \href{mailto:tbs1980@gmail.com}{tbs1980@gmail.com} \\
+    \textsc{github:} & \href{https://github.com/tbs1980}{https://github.com/tbs1980} \\
+    \textsc{linkedin:} & \href{https://www.linkedin.com/in/stbalan}{https://www.linkedin.com/in/stbalan}
+\end{tabular}
+
+%Section: Work Experience at the top
+\section{work experience}
+\begin{tabular}{r|p{11cm}}
+\textsc{jun 2016} & \textbf{Co-founder and CTO at Alpha-I} \\
+\textsc{jan 2018} & \emph{Managed a team of 3 researchers and 2 engineers, developed and deployed a Bayesian Deep Learning algorithm for time series forecasting.}\\
+&\small{
+\begin{itemize}
+    %\item Raised money for a time sereis forecasting platform based on Bayesian Deep Learning by developing a prototype and presenting the results and prospects to investors.
+    %\item Hired and managed a high quality machine learning researchers and software engineers.
+  %   \item Designed a robust time series prediction testing platform for evaluating the performance of algorithms. Wrote library in Python for generating time series based on stochastinc processes. Designed a preformance analysis suite for benchmarking the time series predictions and their uncertainties.
+  %   \item Oversaw the development of a feature genration library in Python. This included developing interfaces for handling columnar data structures and their manipulation, e.g. resampling and applying various integral transformations to raw data using Pandas, xarray, scikit-learn and pymc3.
+  %   \item Supervided the systematic development of a Bayes-by-backprop Deep Learning algorithm for time series forecasting. The prototyping was done using sythetic time series library as well as noise-amplified MNIST data. The stack was written completely in TensforFlo with a 3D architechure using convolutional, pooling and fully connected layers with relu and selu activation functions. Implemeted a normalised binning scheme for tranforming the regression to classification problem for better signal to noise.
+  %   \item Oversaw the design, development and deployment a robust timesries sequential testing platform for both local and cloud platforms. The library moved through time series data and interfaced the Deep Leraning oracle to perform training and produce predictions based on a presscription parsed from yaml files. For parallelising the hyper parameter optimisation I supervided the development of an Asible playbook for launching and running several tens of GPU-instances in the cloud.
+  % \item Researched and implemted a library for estimating covariance matrices from noisy samples. This included taking already availbe C code and interfaing it with python through Cython as well as developing custom modifications to suite the outputs from time series predictions.
+  %   \item Supervised the Git workflow, test driven development using CircleCI and eventual release of packages in GemFury.
+  %   \item Lieased with customers on weekly calls and moulded the software according to the customer's specifications. This included writing a wrapper process for interfacing with client's data and bitcompiling the relevant parts of Python code using Nuikta library.
+  \item Part of the \href{https://www.joinef.com/}{Entrepreneur First} March 2016 cohort.
+  \item Designed and coded a Python library for testing and benchmarking time series prediction algorithms.
+  The library contained methods for producing time series with desired characteristics based on stochastic as well as
+  deterministic processes.
+  \item Oversaw the development of a Python library for generating features from generic time series data.
+  This included coding the for interfaces handling columnar data and their manipulation using, e.g.
+  integral transformations using \href{https://pandas.pydata.org/}{Pandas}, \href{https://www.scipy.org/}{SciPy}
+  and \href{http://scikit-learn.org/stable/}{scikit-learn}.
+  \item Supervised the systematic development of a Bayes-by-backprop Deep Learning algorithm for time
+  series forecasting. The prototyping was done using synthetic a time series data as well as noise-amplified
+  \href{http://yann.lecun.com/exdb/mnist/}{MNIST} data. The stack was written completely in
+  \href{https://www.tensorflow.org/}{TensorFlow} with a 3D architecture using convolutional,
+  pooling and fully connected layers with \texttt{relu}, \texttt{selu} and \texttt{linear} activation functions.
+  %Implemeted a normalised binning scheme for tranforming the regression to classification problem for better signal to noise.
+  \item Championed the use of software testing practices with appropriate Git workflow and using platforms such
+  as \href{https://circleci.com/}{CircleCI}.
+  \item Liaised with clients on weekly calls and shaped the software according to the client's specifications.
+  This included interfacing with client's data and bite-compiling the relevant parts of Python code using
+  \href{http://nuitka.net/}{Nuitka} library.
+
+\end{itemize}
+}\\
+\multicolumn{2}{c}{} \\
+\textsc{jun 2012} & \textbf{Post-doc at the University College London} \\
+\textsc{oct 2016}	&\emph{More than 20 peer-reviewd publications, h-idex of 12.}\\
+&\small{
+\begin{itemize}
+  \item Researched the covariance estimation under low signal to noise and the implications of Bayesian priors on the
+  estimates of both covariance matrices and their inverses.
+  \item Developed a Bayesian cross-correlator for estimating covariances matrices arising from multiple cosmological
+  data sets using Hamiltonian Monte Carlo method. The code was written in portable \textsc{c++} with
+  \href{https://cmake.org/}{CMake} build tool.
+  The code was selected to be part of ESA's \href{https://www.euclid-ec.org/}{\textsc{euclid}} telescop's data processing   pipeline and met strict standards
+  of coding. The code made extensive use of \href{http://eigen.tuxfamily.org/index.php?title=Main_Page}{Eigen} \textsc{c++} library.
+  \item Oversaw the development of a highly parallel Nested Sampling (Monte Carlo) method with kd trees for
+  Bayesian computation.
+  %and benchmarked it on various supercomputing platforms.
+  \item Co-Supervised 3 master’s theses and mentored 3 PhD students.
+  %Offered administrative support for the cosmology group's supercomputer.
+\end{itemize}
+}
+\end{tabular}
 
 
-    \section{education}
-        \begin{entrylist}
-            \entry
-            {2008 -- 2012}
-            {Ph.D. {\normalfont in Physics}}
-            {University of Cambridge, UK}
-            {Thesis: \emph{Bayesian methods for astrophysical data analysis}
-                \begin{itemize}
-                    \item Designed a parallel C++ code for performing Hamiltonian Monte Carlo for cosmological data analysis
-                    \item Analysed stellar photometry data using a high performance Bayesian object detection algorithm
-                    \item Developed a novel method based on wavelets for quantifying non-Gaussanities in cosmological data
-                \end{itemize}
-            }
-            %
-            \entry
-            {2006 -- 2007}
-            {M.Sc. {\normalfont in Physics}}
-            {University College London, UK}
-            {Thesis: \emph{Orbital parameters of exoplanets from radial velocity measurements}
-                \begin{itemize}
-                    \item Developed a Bayesian Markov Chain Monte Carlo algorithm for extras-solar planet detection
-                \end{itemize}
-            }
-            %
-            \entry
-            {1998 -- 2002}
-            {B.Tech. {\normalfont in Mechanical Engineering}}
-            {National Institute of Technology, Calicut, India}
-            {Final year research project:
-            \begin{itemize}
-                \item Wrote and C code for analysing the stress distribution of an artificial hip-joint using Finite Element Method
-            \end{itemize}}
-        \end{entrylist}
+% Work Experience continued
+\begin{tabular}{r|p{11cm}}
+\multicolumn{2}{c}{} \\
+\textsc{oct 2007} & \textbf{Research Assistant at University College London} \\
+\textsc{sep 2008}	&\emph{Main developer for simulating galaxy images for \href{http://www.great08challenge.info/}{GREAT08 challenge}.}\\
+& \small{
+\begin{itemize}
+  \item Created a \textsc{c++} library for stochastically simulating a billion galaxy images using ray-tracing.
+  Successfully simulated, archived the images and made them publicly available for \href{http://www.great08challenge.info/}{GREAT08} image analysis challenge.
+  \item Designed an Object-Oriented Markov Chain Monte Carlo software, \href{http://zuserver2.star.ucl.ac.uk/~lahav/exofit.html}{Exo-Fit}, for Bayesian extra-solar planet
+  detection. The code was a \textsc{cli} application written fully in \textsc{c++} and made extensive use of
+  \href{https://www.gnu.org/software/gsl/}{GNU Scientific Library}.
+\end{itemize}
+}
+\end{tabular}
 
-    \section{experience}
-        \begin{entrylist}
-            \entry
-            {2012 -- Now}
-            {University College London}
-            {\emph{Post-Doctoral Research Associate}}
-            {Achievements:
-            \begin{itemize}
-                \item Developed a software for performing model selection by optimally propagating uncertainties from cosmological observations
-                \item Designed a highly parallel Monte Carlo method for Bayesian computation and benchmarked it on
-            various supercomputing platforms.
-                \item Offered administrative support for the cosmology group's supercomputer
-            \end{itemize}}
-            %
-            \entry
-            {2007 -- 2008}
-            {University College London}
-            {\emph{Research Assistant}}
-            {Achievements:
-            \begin{itemize}
-                \item Created a C++ library for stochastically simulating a billion galaxy images
-                \item Designed an Object Oriented Markov Chain Monte Carlo software for Bayesian exoplanet detection
-            \end{itemize}}
-        \end{entrylist}
+%Section: Education
+\section{education}
+\begin{tabular}{r|p{11cm}}
+\textsc{oct 2008} & PhD in Astrophysics, \textbf{University of Cambridge}\\
+\textsc{apr 2012} & Thesis: ``Bayesian methods for Astrophyscal Data Analysis'' \\
+& \small Advisor: Prof. Michael \textsc{Hobson}\\
+&\small{
+  \begin{itemize}
+    \item Discovered previously undetected extra-solar planets by employing Bayesian model selection
+    with Nested Sampling algorithm.
+    %Developed an optimal way of analysing the light curves stars for detecting extra solar planets.
+    \item Developed the Guided Hamiltonian Monte Carlo method for sampling posterior probability distributions
+    with millions of dimensions.
+    % for cosmological data analysis.
+    %The code was written in \textsc{C++} and \textsc{Fortran} with \textsc{OpenMP}
+    %parallelisation and was applied to cosmological data from space telescopes.
+  \end{itemize}
+}\\
+\textsc{sep 2007} & MSc. with Distinction in Physics, \textbf{University College London}\\
+\textsc{sep 2008} & Thesis: ``Orbital parameters of exoplanets from \\ & radial velocity measurements''
+| \small Advisor: Prof. Ofer \textsc{Lahav}\\
+&\small{
+\begin{itemize}
+  \item Developed a Bayesian formalism for estimating their orbital parameters of extra-solar planets and used a
+  parallel-tempered Metropolis-Hastings algorithm for generate samples form the posterior.
+  % tuned  Metropolis-Hastings Mote Carlo algorithm with parallel tempering to generate samples form the posterior
+  % distribtutions of parameters.
+\end{itemize}
+}\\
 
-    \section{awards}
-        \begin{entrylist}
-            \entry
-            {2009 -- 2011}
-            {Isaac Newton Studentship}
-            {University of Cambridge}
-            {Awarded to two out of more than hundred applicants}
-            %
-            \entry
-            {2007}
-            {Royal Astronomical Society Grant (£2000)}
-            {University College London}
-            {For the development of a statistical software package for analysing radial velocity data of stars}
-        \end{entrylist}
+\textsc{jun 1998} & Bachelor of Technology in Mechanical Engineering, \\
+\textsc{jun 2002} &\textbf{National Institute of Technology}, Calicut, India. \\
+&\small{
+\begin{itemize}
+  \item Final year project work included coding a Finite Element Method in \textsc{c++} for solving partial
+  differential equations.
+  % to obtain the stress distribution of an artificial hip joint.
+\end{itemize}
+}
+\end{tabular}
 
-    \section{publications}
-        \begin{entrylist}
-            \entry
-            {h-index:11}
-            {Three first-author and more than five second-author publications}
-            {}
-            {}
-        \end{entrylist}
+%Section: Scholarships and additional info
+\section{scholarships}
+\begin{tabular}{r|p{11cm}}
+\textsc{sep 2009} & Isaac Newton Studentship, \textbf{University of Cambridge}\\
+\textsc{apr 2012} & \emph{Awarded to two out of more than hundred applicants.}
+\end{tabular}
+
+%Section: Languages
+%\section{Languages}
+%\begin{tabular}{rl}
+ %\textsc{Malayalam:} & Mothertongue\\
+%\textsc{English: }& Fluent\\
+%\textsc{Hindi:} & Basic Knowledge\\
+%\end{tabular}
+
+\section{computing skills}
+\begin{tabular}{r|p{11cm}}
+\textsc{coding}: & Fluent in \textsc{c++} (10+years) and CMake (5+years). Very good knowledge (4+years) of Python.
+Past experience in Fortran, MPI and OpenMP. \\
+\textsc{linux}:& Long experience in using command line tools for coding, maintaining software and administrating a
+wide variety of systems.  \\
+\small{\textsc{numeric}}: & Very good knowledge (1.5+years) of \href{https://www.tensorflow.org/}{TensorFlow}.
+Good knowledge of \href{https://keras.io/}{Keras}, \href{http://www.numpy.org/}{NumPy},
+\href{https://pandas.pydata.org/}{Pandas} nd \href{http://scikit-learn.org/stable/}{scikit-learn}.
+Experienced user of \href{http://eigen.tuxfamily.org/index.php?title=Main_Page}{Eigen} , \href{https://www.gnu.org/software/gsl/}{GSL} and \href{http://www.boost.org/}{boost}.
+\end{tabular}
+
+\section{interests and activities}
+\begin{tabular}{r|p{11cm}}
+\textsc{tech}: & Computing platforms, Programming Languages, Open-source.\\
+\textsc{sports}$\,$: & Badminton, Cycling, Board Games.
+\end{tabular}
+
 \end{document}
